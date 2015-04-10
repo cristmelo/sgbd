@@ -11,9 +11,10 @@ class Page{
 	int position;
 	int lenghtPage;
 	Record **records;
+	bool **slotVector;
 	int numberRecords;
 	int lenghtRecord;
-
+	int type;
 
 
 public:
@@ -26,6 +27,10 @@ public:
 
 	int getPageId();
 
+	void insertObject(Record object);
 
+	Record findObject(int slot);
 
-}
+	void removeObject(int slot);
+
+};

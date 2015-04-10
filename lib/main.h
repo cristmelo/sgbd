@@ -2,9 +2,11 @@
 #define NUMBER_PRIMARY_BUCKETS 4
 #define LENGTH_BUCKETS 2
 
+
 #include <iostream>
 #include <string>
 #include <istream>
+#include <math>
 
 #include "record.h"
 #include "rid.h"

@@ -20,4 +20,4 @@ public:
 
 	int getNumberOfSlot();
 
-}
+};

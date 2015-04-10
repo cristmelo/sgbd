@@ -1,4 +1,6 @@
 class Record
 {
-	Record();
+	
+	virtual string toString();
+	virtual int getLenght();
 };

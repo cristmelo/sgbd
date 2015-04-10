@@ -5,7 +5,7 @@ author: Caio Viktor and Cristiano Melo
 abstract: 
 */
 
-class Bucket{
+class Bucket:Record{
 
 	int localDepth;
 
@@ -14,6 +14,7 @@ class Bucket{
 	int numberOfTheDataEntry;
 
 public:
+	bucket(string bucket);
 
 	Bucket(int numberEntry);
 
@@ -23,4 +24,5 @@ public:
 
 	void removeDataEntry(int key);
 
-}
+	string toString();
+};

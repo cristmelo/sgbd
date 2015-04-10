@@ -5,7 +5,7 @@ author: Caio Viktor and Cristiano Melo
 abstract: 
 */
 
-class Directory{
+class Directory:Record{
 
 	int globalDepth;
 
@@ -16,7 +16,7 @@ class Directory{
 
 public:
 
-	Directory();
+	Directory(string directory);
 
 	Directory( int globalDepth, int numberOfBuckets );
 
@@ -28,4 +28,6 @@ public:
 
 	void removePage( int key );
 
-}
+	string toString();
+
+};

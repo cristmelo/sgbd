@@ -1,11 +1,12 @@
 #include "../lib/main.h"
+
 class Page{
-	Page(int lenghtPage,int lenghtRecord,ifstream *file){
+	Page(int lenghtPage,int lengthObject,ifstream *file){
 		this.lenghtPage = lenghtPage;
-		this.lenghtRecord = lenghtRecord;
-		this.numberRecords = (lenghtPage - sizeof(int)) / (1 + lenghtRecord);
+		this.lengthObject = lengthObject;
+		this.numberRecords = floor( (lenghtPage - 2 * sizeof(int)) / (1 + lengthObject) );
 		this.records = new Record*[numberRecords];
 		this.position = file.end;
 		this.file = file;
 	}
-}
+};

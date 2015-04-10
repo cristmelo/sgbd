@@ -5,4 +5,4 @@ public:
 	DataEntry(int key, Rid *rid);
 	int getKey();
 	Rid* getRid(); 
-}
+};
