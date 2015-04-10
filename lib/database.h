@@ -13,7 +13,7 @@ class Database{
 public:
 	Database(String path);
 
-	Record search(int key);
+	Record* search(int key);
 
 	void insert(Record reg);
 

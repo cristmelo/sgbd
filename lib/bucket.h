@@ -9,7 +9,7 @@ class Bucket{
 
 	int localDepth;
 
-	DataEntry **dataEntry;
+	DataEntry** dataEntry;
 
 	int numberOfTheDataEntry;
 
@@ -17,7 +17,7 @@ public:
 
 	Bucket(int numberEntry);
 
-	Bucket findDataEntry(int key );
+	DataEntry* findDataEntry( int key );
 
 	void insertDataEntry(int key, int rid );
 
