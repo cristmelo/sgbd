@@ -34,8 +34,16 @@ Page* Page::read(int pageId,fstream *file){
 
 	page->numberRecords = stoi(nRecords);
 
-	page->slotVector = new bool*[page->numberRecords];
+	page->slotVector = new bool[page->numberRecords];
 	page->records = new Record*[page->numberRecords];
+	for(int i = 0; i < page->numberRecords ;i++){
+		string current;
+		current = buffer[4+i];
+		if(current == "1")
+			page->slotVector[i] = true;
+		else
+			page->slotVector[i] = false;
+	}
 	//Pegar lengthRecord
 	return page;
 }

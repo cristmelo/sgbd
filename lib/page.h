@@ -11,7 +11,7 @@ class Page{
 	int position;
 	int lenghtPage;
 	Record **records;
-	bool **slotVector;
+	bool *slotVector;
 	int numberRecords;
 	int lengthRecord;
 	int type;

@@ -41,7 +41,7 @@ void Database::openDB(string path){
 	if(*file){
 		file->seekg (0, file->beg);
 		this->DB = file;
-		// *DB << "foi";
+		// *DB << true;
 		// DB->seekp(1,DB->beg);
 		// *DB << 23;
 		cout << "Banco de dados aberto com sucesso\n";
