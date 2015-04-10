@@ -7,15 +7,25 @@ abstract:
 
 class Page{
 
-	int rid;
+	ifstream *file;	
 	int position;
-	int size;
-	int idVector;
+	int lenghtPage;
+	Record **records;
+	int numberRecords;
+	int lenghtRecord;
+
 
 
 public:
+	Page(int lenghtPage,int lenghtRecord,ifstream *file);
 
-	void save();
+	static Page* read(int pageId,ifstream *file);
+
+	void write();
+	void setPageId(int pageId);
+
+	int getPageId();
+
 
 
 }

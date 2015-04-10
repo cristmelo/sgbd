@@ -9,16 +9,18 @@ class Bucket{
 
 	int localDepth;
 
-	int *dataEntry;
+	DataEntry **dataEntry;
 
 	int numberOfTheDataEntry;
 
 public:
 
-	Bucket findDataEntry( key );
+	Bucket(int numberEntry);
 
-	void insertDataEntry( key, Page.rid );
+	Bucket findDataEntry(int key );
 
-	void removeDataEntry( key, Page.rid );
+	void insertDataEntry(int key, int rid );
+
+	void removeDataEntry(int key);
 
 }

@@ -7,15 +7,21 @@ abstract:
 
 class Database{
 
-	File *DB;
+	ifstream *DB;
 
 
 public:
+	Database(String path);
 
-	Register searchRegister();
+	Record search(int key);
 
-	void insert();
+	void insert(Record reg);
 
-	bool remove();
+	bool remove(int key);
+
+	bool open(String path);
+
+	bool close();
+
 
 }
