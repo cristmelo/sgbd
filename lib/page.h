@@ -7,7 +7,7 @@ abstract:
 
 class Page{
 
-	ifstream *file;	
+	fstream *file;	
 	int position;
 	int lenghtPage;
 	Record **records;
@@ -18,9 +18,9 @@ class Page{
 
 
 public:
-	Page(int lenghtPage,int lengthRecord,ifstream *file);
+	Page(int lenghtPage,int lengthRecord,fstream *file);
 
-	static Page* read(int pageId,ifstream *file);
+	static Page* read(int pageId,fstream *file);
 
 	void write();
 	void setPageId(int pageId);

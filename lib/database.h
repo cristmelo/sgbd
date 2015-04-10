@@ -7,9 +7,9 @@ abstract:
 
 class Database{
 
-	ifstream *DB;
+	fstream *DB;
 
-
+	void openDB(string path);
 public:
 	Database(string path);
 

@@ -1,6 +1,6 @@
 #include "../lib/main.h"
 
-Page::Page(int lenghtPage,int lengthRecord,ifstream *file){
+Page::Page(int lenghtPage,int lengthRecord,fstream *file){
 	this->lenghtPage = lenghtPage;
 	this->lengthRecord = lengthRecord;
 	this->numberRecords = floor( (lenghtPage - 2 * sizeof(int)) / (1 + lengthRecord) );
