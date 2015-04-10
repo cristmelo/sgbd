@@ -18,6 +18,7 @@ class Page{
 
 
 public:
+	Page();
 	Page(int lenghtPage,int lengthRecord,fstream *file);
 
 	static Page* read(int pageId,fstream *file);

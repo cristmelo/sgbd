@@ -6,7 +6,6 @@ using namespace std;
 
 #include <iostream>
 #include <string>
-#include <istream>
 #include <fstream>
 #include <cmath>
 

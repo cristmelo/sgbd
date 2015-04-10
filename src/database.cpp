@@ -24,10 +24,10 @@ bool Database::open(string path){
 
 bool Database::close(){
 	if(*(this->DB)){
-		//salvar tudo da memória
+		// salvar tudo da memória
 		// DB->seekg(1,DB->beg);
-		// char *buffer = new char[1];
-		// DB->read(buffer,1);
+		// char *buffer = new char[2];
+		// DB->read(buffer,2);
 		// cout << buffer <<endl;
 		DB->close();
 		cout << "banco de dados fechado com sucesso\n";
@@ -43,7 +43,7 @@ void Database::openDB(string path){
 		this->DB = file;
 		// *DB << "foi";
 		// DB->seekp(1,DB->beg);
-		// *DB << "23";
+		// *DB << 23;
 		cout << "Banco de dados aberto com sucesso\n";
 	}else{
 		cout << "Erro Banco de dados não encontrado" << endl;
