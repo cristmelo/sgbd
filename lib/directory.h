@@ -9,7 +9,7 @@ class Directory{
 
 	int globalDepth;
 
-	int *bucketVector;
+	Bucket **bucketVector;
 
 	int numberOfBuckets;
 
@@ -18,14 +18,14 @@ public:
 
 	Directory();
 
-	Directory( globalDepth, bucketVector, numberOfBuckets );
+	Directory( int globalDepth, int numberOfBuckets );
 
-	Bucket findBucket( key );
+	Bucket** findBucket( int key );
 
-	void insertPage( key, Page );
+	void insertPage( int key, int Page );
 
 	void duplicate();
 
-	void removePage( key );
+	void removePage( int key );
 
 }
