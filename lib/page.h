@@ -13,12 +13,12 @@ class Page{
 	Record **records;
 	bool **slotVector;
 	int numberRecords;
-	int lenghtRecord;
+	int lengthRecord;
 	int type;
 
 
 public:
-	Page(int lenghtPage,int lenghtRecord,ifstream *file);
+	Page(int lenghtPage,int lengthRecord,ifstream *file);
 
 	static Page* read(int pageId,ifstream *file);
 

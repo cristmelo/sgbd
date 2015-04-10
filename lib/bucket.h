@@ -14,7 +14,7 @@ class Bucket:Record{
 	int numberOfTheDataEntry;
 
 public:
-	bucket(string bucket);
+	Bucket(string bucket);
 
 	Bucket(int numberEntry);
 

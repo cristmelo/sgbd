@@ -14,7 +14,7 @@ class Rid{
 
 public:
 
-	Rid( numberOfThePage, numberOfTheSlot );
+	Rid(int numberOfThePage,int numberOfTheSlot );
 
 	int getNumberOfPage(); 
 

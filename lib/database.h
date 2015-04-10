@@ -11,7 +11,7 @@ class Database{
 
 
 public:
-	Database(String path);
+	Database(string path);
 
 	Record* search(int key);
 
@@ -19,7 +19,7 @@ public:
 
 	bool remove(int key);
 
-	bool open(String path);
+	bool open(string path);
 
 	bool close();
 

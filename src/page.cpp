@@ -1,12 +1,14 @@
 #include "../lib/main.h"
 
-class Page{
-	Page(int lenghtPage,int lengthObject,ifstream *file){
-		this.lenghtPage = lenghtPage;
-		this.lengthObject = lengthObject;
-		this.numberRecords = floor( (lenghtPage - 2 * sizeof(int)) / (1 + lengthObject) );
-		this.records = new Record*[numberRecords];
-		this.position = file.end;
-		this.file = file;
-	}
-};
+Page::Page(int lenghtPage,int lengthRecord,ifstream *file){
+	this->lenghtPage = lenghtPage;
+	this->lengthRecord = lengthRecord;
+	this->numberRecords = floor( (lenghtPage - 2 * sizeof(int)) / (1 + lengthRecord) );
+	this->records = new Record*[numberRecords];
+	
+	file->seekg(file->end);
+	this->position = file->tellg();
+	file->seekg(file->beg);
+	
+	this->file = file;
+}
