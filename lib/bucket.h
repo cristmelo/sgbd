@@ -14,7 +14,7 @@ class Bucket:Record{
 	int numberOfTheDataEntry;
 
 public:
-	Bucket(string bucket);
+	Bucket();
 
 	Bucket(int numberEntry);
 
@@ -25,4 +25,8 @@ public:
 	void removeDataEntry(int key);
 
 	string toString();
+
+	void fromString(string record);
+
+	static int getLength();
 };

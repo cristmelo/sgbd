@@ -25,7 +25,9 @@ Page* Page::read(int pageId,fstream *file){
 	file->seekg(page->position,file->beg);
 	file->read(buffer,LENGTH_PAGE);
 
-	page->type = buffer[0];
+	string ntype;
+	ntype = buffer[0];
+	page->type = stoi(ntype);
 
 	string nRecords;
 	nRecords = buffer[1];
@@ -44,7 +46,21 @@ Page* Page::read(int pageId,fstream *file){
 		else
 			page->slotVector[i] = false;
 	}
-	//Pegar lengthRecord
+
+	// switch(page->type){
+	// 	case TYPE_DIRECTORY:
+	// 		page->records = new Directory*[page->numberRecords];
+	// 		page->lengthRecord = Directory.getLength();
+	// 	break;
+	// 	case TYPE_BUCKET:
+	// 		page->records = new Bucket*[page->numberRecords];
+	// 		page->lengthRecord = Directory.getLength();
+	// 	break;
+	// 	case TYPE_RECORD:
+	// 		// page->records = new Directory*[page->numberRecords];
+	// 		// page->lengthRecord = Directory.getLength();
+	// 	break;
+	// }
 	return page;
 }
 

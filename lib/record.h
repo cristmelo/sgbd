@@ -1,6 +1,6 @@
-class Record
-{
-	
-	virtual string toString();
-	virtual int getLenght();
+class Record{
+public:
+	string toString();
+	int getLenght();
+	static void fromString(string record);
 };

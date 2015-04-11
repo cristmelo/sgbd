@@ -6,7 +6,7 @@ abstract:
 */
 
 class Page{
-
+public:
 	fstream *file;	
 	int position;
 	int lenghtPage;
@@ -17,7 +17,7 @@ class Page{
 	int type;
 
 
-public:
+// public:
 	Page();
 	Page(int lenghtPage,int lengthRecord,fstream *file);
 

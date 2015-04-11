@@ -5,18 +5,18 @@ author: Caio Viktor and Cristiano Melo
 abstract: 
 */
 
-class Directory:Record{
+class Directory : public Record{
 
 	int globalDepth;
 
-	Bucket **bucketVector;
+	Rid **bucketVector;
 
 	int numberOfBuckets;
 
 
 public:
 
-	Directory(string directory);
+	Directory();
 
 	Directory( int globalDepth, int numberOfBuckets );
 
@@ -30,4 +30,7 @@ public:
 
 	string toString();
 
+	void fromString(string record);
+
+	static int getLength();
 };
