@@ -10,12 +10,10 @@ using namespace std;
 #include <string>
 #include <fstream>
 #include <cmath>
-#include <vector>
+// #include <vector>
 
-#include "record.h"
 #include "rid.h"
 #include "dataEntry.h"
-#include "page.h"
 #include "bucket.h"
 #include "directory.h"
 #include "database.h"

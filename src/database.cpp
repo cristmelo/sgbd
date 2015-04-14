@@ -4,11 +4,11 @@ Database::Database(string path){
 
 }
 
-Record* Database::search(int key){
+int Database::search(int key){
 
 }
 
-void Database::insert(Record reg){
+void Database::insert(int reg){
 
 }
 
@@ -29,7 +29,7 @@ bool Database::close(){
 		// char *buffer = new char[2];
 		// DB->read(buffer,2);
 		// cout << buffer <<endl;
-		
+
 		DB->close();
 		Dic->close();
 		cout << "banco de dados fechado com sucesso\n";

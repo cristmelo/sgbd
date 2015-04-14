@@ -5,7 +5,7 @@ author: Caio Viktor and Cristiano Melo
 abstract: 
 */
 
-class Directory : public Record{
+class Directory{
 
 	int globalDepth;
 

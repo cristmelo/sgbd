@@ -14,9 +14,9 @@ class Database{
 public:
 	Database(string path);
 
-	Record* search(int key);
+	int search(int key);
 
-	void insert(Record reg);
+	void insert(int reg);
 
 	bool remove(int key);
 
