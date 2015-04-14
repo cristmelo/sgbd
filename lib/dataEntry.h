@@ -18,7 +18,7 @@ public:
 
 	int getKey();
 
-	//Rid* getRid(); 
+	int getRid(); 
 	string getEntry();
 	
 };

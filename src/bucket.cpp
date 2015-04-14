@@ -1,6 +1,6 @@
 #include "../lib/main.h"
 Bucket::Bucket(string path){
-
+	
 }
 Bucket::Bucket(string path, int position, int localDepth){
 
@@ -43,7 +43,10 @@ Bucket::Bucket(string path, int position, int localDepth){
 }
 
 DataEntry* Bucket::findDataEntry( int key ){
-
+	// for(int i = 0 ; i < numberOfTheDataEntry; i++)
+	// 	if(dataEntry[i]->getKey() == key){
+	// 		return dataEntry[i];
+	// 	}
 }
 
 void Bucket::insertDataEntry(int key, int rid ){
@@ -51,7 +54,11 @@ void Bucket::insertDataEntry(int key, int rid ){
 }
 
 void Bucket::removeDataEntry(int key){
-
+	// for(int i = 0 ; i < numberOfTheDataEntry; i++)
+	// 	if(dataEntry[i]->getKey() == key){
+	// 		isUse[i] = false;
+	// 		numberOfTheDataEntryEmpty++;
+	// 	}
 }
 
 void Bucket::write(){
