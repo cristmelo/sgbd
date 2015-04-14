@@ -15,13 +15,13 @@ public:
 
 	int numberOfTheDataEntry;
 	int numberOfTheDataEntryEmpty;
-	fstream *db;
+	string path;
 
 	string* teste;
 
 // public:
-	Bucket(fstream *db);
-	Bucket(fstream *db, int position, int localDepth);
+	Bucket(string path);
+	Bucket(string path, int position, int localDepth);
 
 	DataEntry* findDataEntry( int key );
 

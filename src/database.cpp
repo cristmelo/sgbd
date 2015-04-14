@@ -29,6 +29,7 @@ bool Database::close(){
 		// char *buffer = new char[2];
 		// DB->read(buffer,2);
 		// cout << buffer <<endl;
+		
 		DB->close();
 		Dic->close();
 		cout << "banco de dados fechado com sucesso\n";
@@ -53,7 +54,7 @@ void Database::openDB(string path){
 		// *DB << true;
 		// DB->seekp(1,DB->beg);
 		// *DB << 23;
-		
+
 		cout << "Banco de dados aberto com sucesso\n";
 	}else{
 		cout << "Erro Banco de dados não encontrado" << endl;

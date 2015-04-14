@@ -8,6 +8,7 @@ abstract:
 class Database{
 
 	fstream *DB,*Dic;
+	string dbName,dicName;
 
 	void openDB(string path);
 public:

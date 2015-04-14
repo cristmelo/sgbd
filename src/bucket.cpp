@@ -1,12 +1,11 @@
 #include "../lib/main.h"
-Bucket::Bucket(fstream *db){
+Bucket::Bucket(string path){
 
 }
-Bucket::Bucket(fstream *db, int position, int localDepth){
+Bucket::Bucket(string path, int position, int localDepth){
 
-	// db->seekp(0,db->beg);
-	// *db << 23;
-	this->db = db;
+	this->path = path;
+	fstream *db = new fstream(path.c_str(), ios::in | ios::out );
 	this->position = position;
 	this->localDepth = localDepth;
 	this->numberOfTheDataEntry = floor((LENGTH_BUCKETS * LENGTH_PAGE)/(1+LENGTH_DATA_ENTRY));
@@ -40,6 +39,7 @@ Bucket::Bucket(fstream *db, int position, int localDepth){
 		this->dataEntry[i] = new DataEntry(data);
 		this->teste[i] = data;
 	}
+	db->close();
 }
 
 DataEntry* Bucket::findDataEntry( int key ){
@@ -55,6 +55,7 @@ void Bucket::removeDataEntry(int key){
 }
 
 void Bucket::write(){
+	fstream *db = new fstream(path, ios::in | ios::out );
 	int emptySpace = (LENGTH_BUCKETS * LENGTH_PAGE) - (this->numberOfTheDataEntry + this->numberOfTheDataEntry * LENGTH_DATA_ENTRY);
 	db->seekp(position,db->beg);
 
@@ -73,9 +74,9 @@ void Bucket::write(){
 	}
 	for(int i = 0 ; i < emptySpace; i++)
 		buffer+="$";
-	cout << buffer <<endl;
 
 	db->write(buffer.c_str(),bytesForBucket);
+	db->close();
 }
 
 bool Bucket::isFull(){
