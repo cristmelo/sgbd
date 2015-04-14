@@ -7,7 +7,7 @@ abstract:
 
 class Database{
 
-	fstream *DB;
+	fstream *DB,*Dic;
 
 	void openDB(string path);
 public:

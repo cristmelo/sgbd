@@ -2,7 +2,7 @@
 
 int main(){
 
-	// Database db("db.db");
+	// Database db("db");
 
 	// db.close();
 	
@@ -10,14 +10,20 @@ int main(){
 	if(*file){
 		file->seekg (0, file->beg);
 		cout << "Banco de dados aberto com sucesso\n";
-		Page *page = Page::read(0,file);
-		cout << "Page\ntype: " << page->type << "\nslots: " << page->numberRecords <<"\nposition: " << page->position << endl;
-		for(int i = 0 ; i < page->numberRecords ; i++)
-			cout << page->slotVector[i] << endl;
+		Bucket *bucket = new Bucket(file,0,2);
+		cout << "bucket\nslots: " << bucket->numberOfTheDataEntry <<"\nVazios: "<< bucket->numberOfTheDataEntryEmpty <<"\nposition: " << bucket->position << "\nnivel: " << bucket->localDepth << endl;
+		for(int i = 0 ; i < bucket->numberOfTheDataEntry ; i++)
+			cout << bucket->isUse[i] << endl;
+		cout << "Entradas de dados:\n";
+		for(int i = 0 ; i < bucket->numberOfTheDataEntry ; i++)
+			cout << "entrada: " << i<< " Valor:" << bucket->teste[i] << endl;
+		bucket->write();
 		file->close();
 	}else{
 		cout << "Erro Banco de dados não encontrado" << endl;
 	}
+
+
 	return 0;
 
 }

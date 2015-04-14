@@ -1,10 +1,8 @@
 #define LENGTH_PAGE 128
 #define NUMBER_PRIMARY_BUCKETS 4
 #define LENGTH_BUCKETS 2
+#define LENGTH_DATA_ENTRY 8
 
-#define TYPE_DIRECTORY 7
-#define TYPE_BUCKET 8
-#define TYPE_RECORD 9
 
 using namespace std;
 

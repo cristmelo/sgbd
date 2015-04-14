@@ -9,15 +9,16 @@ class DataEntry{
 	
 	int key;
 	
-	Rid *rid;
+	int rid;
 
 
 public:
-
-	DataEntry(int key, Rid *rid);
+	DataEntry(string data);
+	DataEntry(int key);
 
 	int getKey();
 
-	Rid* getRid(); 
+	//Rid* getRid(); 
+	string getEntry();
 	
 };

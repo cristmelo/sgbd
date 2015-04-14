@@ -10,13 +10,13 @@ Rid::Rid( int numberOfThePage, int numberOfTheSlot ){
 }
 
 
-int Rid::getNumberOfThePage(){
+int Rid::getNumberOfPage(){
 
 	return this->numberOfThePage;
 
 }
 
-int Rid::getNumberOfTheSlot(){
+int Rid::getNumberOfSlot(){
 
 	return this->numberOfTheSlot;
 

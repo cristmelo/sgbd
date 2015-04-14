@@ -5,18 +5,23 @@ author: Caio Viktor and Cristiano Melo
 abstract: 
 */
 
-class Bucket:Record{
-
+class Bucket{
+public:
 	int localDepth;
+	int position;
 
 	DataEntry** dataEntry;
+	bool *isUse;
 
 	int numberOfTheDataEntry;
+	int numberOfTheDataEntryEmpty;
+	fstream *db;
 
-public:
-	Bucket();
+	string* teste;
 
-	Bucket(int numberEntry);
+// public:
+	Bucket(fstream *db);
+	Bucket(fstream *db, int position, int localDepth);
 
 	DataEntry* findDataEntry( int key );
 
@@ -24,9 +29,9 @@ public:
 
 	void removeDataEntry(int key);
 
-	string toString();
+	void write();
 
-	void fromString(string record);
+	bool isFull();
 
-	static int getLength();
+
 };
