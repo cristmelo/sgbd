@@ -11,6 +11,7 @@ class DataEntry{
 	
 	int rid;
 
+	string entry;
 
 public:
 	DataEntry(string data);

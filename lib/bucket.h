@@ -20,7 +20,7 @@ public:
 	string* teste;
 
 // public:
-	Bucket(string path);
+	Bucket(string path,int localDepth);
 	Bucket(string path, int position, int localDepth);
 
 	DataEntry* findDataEntry( int key );
@@ -32,6 +32,11 @@ public:
 	void write();
 
 	bool isFull();
+
+	void incrementLocalDepth();
+
+	int getPosition();
+	int getLocalDepth();
 
 
 };

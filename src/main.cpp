@@ -18,6 +18,21 @@ int main(){
 		for(int i = 0 ; i < bucket->numberOfTheDataEntry ; i++)
 			cout << "entrada: " << i<< " Valor:" << bucket->teste[i] << endl;
 		bucket->write();
+
+
+		// Bucket *novo = new Bucket("db.db",2);
+		// cout << "novo\nslots: " << novo->numberOfTheDataEntry <<"\nVazios: "<< novo->numberOfTheDataEntryEmpty <<"\nposition: " << novo->position << "\nnivel: " << novo->localDepth << endl;
+		// for(int i = 0 ; i < novo->numberOfTheDataEntry ; i++)
+		// 	cout << novo->isUse[i] << endl;
+		// novo->write();
+
+		Bucket *bucket2 = new Bucket("db.db",256,2);
+		cout << "bucket2\nslots: " << bucket2->numberOfTheDataEntry <<"\nVazios: "<< bucket2->numberOfTheDataEntryEmpty <<"\nposition: " << bucket2->position << "\nnivel: " << bucket2->localDepth << endl;
+		for(int i = 0 ; i < bucket2->numberOfTheDataEntry ; i++)
+			cout << bucket2->isUse[i] << endl;
+		cout << "Entradas de dados:\n";
+		for(int i = 0 ; i < bucket2->numberOfTheDataEntry ; i++)
+			cout << "entrada: " << i << " Valor:" << bucket2->teste[i] << endl;
 		file->close();
 	}else{
 		cout << "Erro Banco de dados não encontrado" << endl;
