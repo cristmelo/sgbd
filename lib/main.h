@@ -14,6 +14,7 @@ using namespace std;
 #include <cmath>
 #include <stdlib.h>
 #include <time.h>
+#include <bitset>
 
 // #include <vector>
 

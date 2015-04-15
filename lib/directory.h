@@ -22,7 +22,7 @@ public:
 	Directory(int globalDepth,int position,string path );
 	Directory( int globalDepth, string path );
 
-	Bucket** findBucket( int key );
+	int findBucket( int key );
 
 	int getLocalDepthBucket(int id);
 

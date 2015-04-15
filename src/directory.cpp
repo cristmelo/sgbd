@@ -58,8 +58,13 @@ Directory::Directory( int globalDepth,string path ){
   	}
 }
 
-Bucket** Directory::findBucket( int key ){
+int Directory::findBucket( int key ){
+	string binary = bitset<32>(key).to_string();
+	string binaryG = binary.substr(32 - globalDepth,32);
+	int bucket = bitset<32>(binaryG).to_ulong();
+	// cout << positionBucket[bucket] <<endl;
 
+	return positionBucket[bucket];
 }
 
 void Directory::insertPage( int key, int Page ){
@@ -90,5 +95,5 @@ void Directory::write(){
 	dic->close();
 }
 int Directory::getLocalDepthBucket(int id){
-
+	return localDepthBucket[id];
 }
