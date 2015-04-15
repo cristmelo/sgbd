@@ -34,11 +34,12 @@ int main(){
 		// for(int i = 0 ; i < bucket2->numberOfTheDataEntry ; i++)
 		// 	cout << "entrada: " << i << " Valor:" << bucket2->teste[i] << endl;
 
-		// Directory *dic = Directory::readDirectory(0,"db.dic");
-		Directory *dic = new Directory(2,"db.dic");
+		Directory *dic = Directory::readDirectory(0,"db.dic"); // ler
+		// Directory *dic = new Directory(2,"db.dic"); // cria
 		cout << "Diretório " << dic->position << "\nProfundidade: " << dic->globalDepth << "\nNúmero de buckets: " << dic->numberOfBuckets << "\nNúmero de Bytes: " << dic->bytes << endl;
 		for(int i = 0; i < dic->numberOfBuckets; i++ )
 			cout << "Bucket :" << dic->positionBucket[i] << "\tProfundidade: " << dic->localDepthBucket[i] << endl;
+		dic->write();
 		file->close();
 	}else{
 		cout << "Erro Banco de dados não encontrado" << endl;

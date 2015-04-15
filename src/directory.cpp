@@ -75,7 +75,19 @@ void Directory::removePage( int key ){
 }
 
 void Directory::write(){
-	
+	fstream *dic = new fstream(path, ios::in | ios::out );
+	int emptySpace = LENGTH_PAGE - (bytes % LENGTH_PAGE);
+	dic->seekp(position,dic->beg);
+	string buffer = stringNBytes(globalDepth,LENGTH_DEPTH);
+	for(int i = 0; i < numberOfBuckets; i++){
+		int positionB = positionBucket[i] / (LENGTH_BUCKETS * LENGTH_PAGE);
+		buffer += stringNBytes(positionB,LENGTH_DEPTH);
+		buffer += stringNBytes(localDepthBucket[i],LENGTH_DEPTH);
+	}
+	for(int i = 0 ; i < emptySpace; i++)
+		buffer+="$";
+	dic->write(buffer.c_str(),bytes+emptySpace);
+	dic->close();
 }
 int Directory::getLocalDepthBucket(int id){
 
