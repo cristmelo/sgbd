@@ -57,6 +57,7 @@ Bucket::Bucket(string path, int position, int localDepth){
 		this->dataEntry[i] = new DataEntry(data);
 		this->teste[i] = data;
 	}
+	delete buffer;
 	db->close();
 }
 

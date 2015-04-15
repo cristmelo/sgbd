@@ -6,19 +6,21 @@ abstract:
 */
 
 class Directory{
-
+public:
+	int position;
 	int globalDepth;
 
-	// Rid **bucketVector;
+	int *localDepthBucket;
+	int *positionBucket;
 
 	int numberOfBuckets;
+	int bytes;
+	string path;
 
+// public:
 
-public:
-
-	Directory();
-
-	Directory( int globalDepth, int numberOfBuckets );
+	Directory(int globalDepth,int position,string path );
+	Directory( int globalDepth, string path );
 
 	Bucket** findBucket( int key );
 
@@ -28,9 +30,7 @@ public:
 
 	void removePage( int key );
 
-	string toString();
+	void write();
+	static Directory* readDirectory(int position, string path);
 
-	void fromString(string record);
-
-	static int getLength();
 };
