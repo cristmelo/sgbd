@@ -25,7 +25,7 @@ public:
 
 	DataEntry* findDataEntry( int key );
 
-	void insertDataEntry(int key, int rid );
+	void insertDataEntry(int key);
 
 	void removeDataEntry(int key);
 

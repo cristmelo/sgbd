@@ -37,11 +37,6 @@ DataEntry::DataEntry( int key ){
             }while( verify == false );
 
 }
-
-
-DataEntry::DataEntry( string data ){
-
-}    
            
 int DataEntry::getKey(){
     

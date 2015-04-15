@@ -9,7 +9,7 @@ class Directory{
 
 	int globalDepth;
 
-	Rid **bucketVector;
+	// Rid **bucketVector;
 
 	int numberOfBuckets;
 

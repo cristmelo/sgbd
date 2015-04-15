@@ -13,7 +13,7 @@ Bucket::Bucket(string path, int localDepth){
 
 	for(int i = 0; i < this->numberOfTheDataEntry ;i++){
 		isUse[i] = 0;
-		// dataEntry[i] = new DataEntry("$$$$$$$$");
+		dataEntry[i] = new DataEntry("$$$$$$$$");
 		teste[i] = "$$$$$$$$";
 	}
 	db->seekg (0,db->end);
@@ -61,22 +61,30 @@ Bucket::Bucket(string path, int position, int localDepth){
 }
 
 DataEntry* Bucket::findDataEntry( int key ){
-	// for(int i = 0 ; i < numberOfTheDataEntry; i++)
-	// 	if(dataEntry[i]->getKey() == key){
-	// 		return dataEntry[i];
-	// 	}
+	for(int i = 0 ; i < numberOfTheDataEntry; i++)
+		if(dataEntry[i]->getKey() == key && isUse[i]){
+			return dataEntry[i];
+		}
+	return NULL;
 }
 
-void Bucket::insertDataEntry(int key, int rid ){
-
+void Bucket::insertDataEntry(int key){
+	if(isFull())
+		return ;
+	for(int i = 0 ; i < numberOfTheDataEntry; i++)
+		if(!isUse[i]){
+			dataEntry[i] = new DataEntry(key);
+			numberOfTheDataEntryEmpty--;
+			return;
+		}
 }
 
 void Bucket::removeDataEntry(int key){
-	// for(int i = 0 ; i < numberOfTheDataEntry; i++)
-	// 	if(dataEntry[i]->getKey() == key){
-	// 		isUse[i] = false;
-	// 		numberOfTheDataEntryEmpty++;
-	// 	}
+	for(int i = 0 ; i < numberOfTheDataEntry; i++)
+		if(dataEntry[i]->getKey() == key){
+			isUse[i] = false;
+			numberOfTheDataEntryEmpty++;
+		}
 }
 
 void Bucket::write(){
@@ -93,7 +101,7 @@ void Bucket::write(){
 			buffer += "0";
 	}
 	for(int i = 0; i < numberOfTheDataEntry; i++){
-		// buffer += dataEntry[i]->getEntry();
+		buffer += dataEntry[i]->getEntry();
 		//teste
 		buffer += teste[i];
 	}

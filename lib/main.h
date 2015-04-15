@@ -16,7 +16,6 @@ using namespace std;
 
 // #include <vector>
 
-#include "rid.h"
 #include "dataEntry.h"
 #include "bucket.h"
 #include "directory.h"
