@@ -44,7 +44,15 @@ int main(){
 		cout << "Erro Banco de dados não encontrado" << endl;
 	}
 
-
 	return 0;
 
+}
+string stringNBytes(int num, int bytes){
+	string numS = to_string(num);
+	int addDigit = bytes - numS.length();
+	string r = "";
+	for(int i = 0 ; i < addDigit ; i++)
+		r+="0";
+	r+=numS;
+	return r;
 }

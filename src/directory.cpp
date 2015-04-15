@@ -75,7 +75,7 @@ void Directory::removePage( int key ){
 }
 
 void Directory::write(){
-
+	
 }
 int Directory::getLocalDepthBucket(int id){
 

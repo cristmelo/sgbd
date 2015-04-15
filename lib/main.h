@@ -21,3 +21,5 @@ using namespace std;
 #include "bucket.h"
 #include "directory.h"
 #include "database.h"
+
+string stringNBytes(int num, int bytes);
