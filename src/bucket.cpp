@@ -101,7 +101,7 @@ void Bucket::write(){
 			buffer += "0";
 	}
 	for(int i = 0; i < numberOfTheDataEntry; i++){
-		buffer += dataEntry[i]->getEntry();
+		// buffer += dataEntry[i]->getEntry();
 		//teste
 		buffer += teste[i];
 	}
