@@ -39,7 +39,23 @@ Directory* Directory::readDirectory(int position, string path){
 }
 
 Directory::Directory( int globalDepth,string path ){
+	fstream *dic = new fstream(path.c_str(), ios::in | ios::out );
+	dic->seekg (0,dic->end);
+  	int position = dic->tellg();
+  	dic->close();
 
+  	this->position = position;
+	this->globalDepth = globalDepth;
+	this->path = path;
+	numberOfBuckets = pow(2,globalDepth);
+	localDepthBucket = new int[numberOfBuckets];
+	positionBucket = new int[numberOfBuckets];
+	bytes = ( LENGTH_DEPTH + (numberOfBuckets * (LENGTH_DEPTH + LENGTH_ID_BUCKET)) );
+
+  	for(int i = 0 ; i < this->numberOfBuckets; i++){
+  		this->positionBucket[i] = i * LENGTH_PAGE * LENGTH_BUCKETS;
+  		this->localDepthBucket[i] = globalDepth;
+  	}
 }
 
 Bucket** Directory::findBucket( int key ){
@@ -59,5 +75,8 @@ void Directory::removePage( int key ){
 }
 
 void Directory::write(){
+
+}
+int Directory::getLocalDepthBucket(int id){
 
 }

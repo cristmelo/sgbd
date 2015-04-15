@@ -24,6 +24,8 @@ public:
 
 	Bucket** findBucket( int key );
 
+	int getLocalDepthBucket(int id);
+
 	void insertPage( int key, int Page );
 
 	void duplicate();
