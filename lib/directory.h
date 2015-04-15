@@ -22,15 +22,11 @@ public:
 	Directory(int globalDepth,int position,string path );
 	Directory( int globalDepth, string path );
 
-	int findBucket( int key );
+	int* findBucket( int key );
 
 	int getLocalDepthBucket(int id);
 
-	void insertPage( int key, int Page );
-
 	void duplicate();
-
-	void removePage( int key );
 
 	void write();
 	static Directory* readDirectory(int position, string path);

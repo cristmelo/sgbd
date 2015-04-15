@@ -58,26 +58,23 @@ Directory::Directory( int globalDepth,string path ){
   	}
 }
 
-int Directory::findBucket( int key ){
+int* Directory::findBucket( int key ){
 	string binary = bitset<32>(key).to_string();
 	string binaryG = binary.substr(32 - globalDepth,32);
 	int bucket = bitset<32>(binaryG).to_ulong();
 	// cout << positionBucket[bucket] <<endl;
-
-	return positionBucket[bucket];
+	int *result = new int[3];
+	result[0] = positionBucket[bucket];
+	result[1] = localDepthBucket[bucket];
+	result[3] = bucket;
+	return result;
 }
 
-void Directory::insertPage( int key, int Page ){
-
-}
 
 void Directory::duplicate(){
-
+	//TODO
 }
 
-void Directory::removePage( int key ){
-
-}
 
 void Directory::write(){
 	fstream *dic = new fstream(path, ios::in | ios::out );
