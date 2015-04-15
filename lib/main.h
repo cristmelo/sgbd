@@ -9,7 +9,11 @@ using namespace std;
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <sstream>
 #include <cmath>
+#include <stdlib.h>
+#include <time.h>
+
 // #include <vector>
 
 #include "rid.h"
