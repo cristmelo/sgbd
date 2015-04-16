@@ -1,6 +1,10 @@
 #include "../lib/main.h"
 
+
+
 int main(){
+
+	set<int> *generatedRids = new set<int> ();
 
 	// Database db("db");
 
@@ -50,6 +54,12 @@ int main(){
 		cout << "Erro Banco de dados não encontrado" << endl;
 	}
 
+	//DataEntry *data = new DataEntry(23);
+	DataEntry *data = new DataEntry(1, generatedRids);
+	
+	cout << generatedRids->count(1000) << endl;
+
+	//cout << data->getKey()<<endl<<data->getRid()<<endl<<data->getEntry() << endl;
 	return 0;
 
 }

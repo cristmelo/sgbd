@@ -11,15 +11,17 @@ class DataEntry{
 	
 	int rid;
 
-	string entry;
+	bool isEmpty = true;
 
 public:
 	DataEntry(string data);
-	DataEntry(int key);
+	DataEntry(int key, set<int> *generatedRids );
 
 	int getKey();
 
 	int getRid(); 
 	string getEntry();
 	
+	bool itDoesntContainValue(); 
+
 };

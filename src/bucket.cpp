@@ -74,7 +74,7 @@ void Bucket::insertDataEntry(int key){
 		return ;
 	for(int i = 0 ; i < numberOfTheDataEntry; i++)
 		if(!isUse[i]){
-			dataEntry[i] = new DataEntry(key);
+			//dataEntry[i] = new DataEntry(key);
 			numberOfTheDataEntryEmpty--;
 			return;
 		}

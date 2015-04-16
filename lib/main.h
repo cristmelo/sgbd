@@ -4,7 +4,6 @@
 #define LENGTH_DEPTH 4
 #define LENGTH_ID_BUCKET 4
 
-
 using namespace std;
 
 #include <iostream>
@@ -15,6 +14,7 @@ using namespace std;
 #include <stdlib.h>
 #include <time.h>
 #include <bitset>
+#include <set>
 
 // #include <vector>
 
@@ -24,3 +24,4 @@ using namespace std;
 #include "database.h"
 
 string stringNBytes(int num, int bytes);
+
