@@ -60,13 +60,15 @@ DataEntry::DataEntry( int key, set<int> *generatedRids ){
 }
            
 int DataEntry::getKey(){
-    
+    if(isEmpty)
+        return -999999999;
     return this->key;
     
 }
 
 int DataEntry::getRid(){
-    
+    if(isEmpty)
+        return -999999999;
     return this->rid;
     
 }           

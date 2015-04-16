@@ -25,7 +25,7 @@ public:
 
 	DataEntry* findDataEntry( int key );
 
-	void insertDataEntry(int key);
+	void insertDataEntry(int key, set<int> *generatedRids);
 
 	void removeDataEntry(int key);
 

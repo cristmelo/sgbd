@@ -10,6 +10,8 @@ class Database{
 	fstream *DB,*Dic;
 	string dbName,dicName;
 
+	set<int> *generatedRids;
+
 	void openDB(string path);
 public:
 	Database(string path);

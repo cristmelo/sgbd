@@ -32,6 +32,7 @@ bool Database::close(){
 
 		DB->close();
 		Dic->close();
+		delete generatedRids;
 		cout << "banco de dados fechado com sucesso\n";
 	}
 	else
@@ -39,6 +40,7 @@ bool Database::close(){
 }
 
 void Database::openDB(string path){
+	generatedRids = new set<int> ();
 	string dbName,dicName;
 	dbName = path + ".db";
 	dicName = path + ".dic";

@@ -9,12 +9,12 @@ Bucket::Bucket(string path, int localDepth){
 	this->numberOfTheDataEntryEmpty = LENGTH_BUCKETS * LENGTH_PAGE;
 
 	//teste
-	this->teste = new string[this->numberOfTheDataEntry];
+	// this->teste = new string[this->numberOfTheDataEntry];
 
 	for(int i = 0; i < this->numberOfTheDataEntry ;i++){
 		isUse[i] = 0;
 		dataEntry[i] = new DataEntry("$$$$$$$$");
-		teste[i] = "$$$$$$$$";
+		// teste[i] = "$$$$$$$$";
 	}
 	db->seekg (0,db->end);
   	this->position = db->tellg();
@@ -31,7 +31,7 @@ Bucket::Bucket(string path, int position, int localDepth){
 	this->isUse = new bool[numberOfTheDataEntry];
 	this->numberOfTheDataEntryEmpty = 0;
 	//teste
-	this->teste = new string[this->numberOfTheDataEntry];
+	// this->teste = new string[this->numberOfTheDataEntry];
 
 	int bytesForBucket = LENGTH_BUCKETS * LENGTH_PAGE;
 	char *buffer = new char[bytesForBucket];
@@ -55,7 +55,7 @@ Bucket::Bucket(string path, int position, int localDepth){
 			data += buffer[indexCurrent+j];
 		}
 		this->dataEntry[i] = new DataEntry(data);
-		this->teste[i] = data;
+		// this->teste[i] = data;
 	}
 	delete buffer;
 	db->close();
@@ -66,15 +66,16 @@ DataEntry* Bucket::findDataEntry( int key ){
 		if(dataEntry[i]->getKey() == key && isUse[i]){
 			return dataEntry[i];
 		}
-	return NULL;
+	return new DataEntry("$$$$$$$$");
 }
 
-void Bucket::insertDataEntry(int key){
+void Bucket::insertDataEntry(int key, set<int> *generatedRids){
 	if(isFull())
 		return ;
 	for(int i = 0 ; i < numberOfTheDataEntry; i++)
 		if(!isUse[i]){
-			//dataEntry[i] = new DataEntry(key);
+			dataEntry[i] = new DataEntry(key,generatedRids);
+			isUse[i] = true;
 			numberOfTheDataEntryEmpty--;
 			return;
 		}
@@ -102,9 +103,12 @@ void Bucket::write(){
 			buffer += "0";
 	}
 	for(int i = 0; i < numberOfTheDataEntry; i++){
-		// buffer += dataEntry[i]->getEntry();
+		if(isUse[i])
+			buffer += dataEntry[i]->getEntry();
+		else
+			buffer += "$$$$$$$$";
 		//teste
-		buffer += teste[i];
+		// buffer += teste[i];
 	}
 	for(int i = 0 ; i < emptySpace; i++)
 		buffer+="$";
