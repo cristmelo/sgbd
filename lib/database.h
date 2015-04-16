@@ -18,7 +18,7 @@ public:
 
 	int search(int key);
 
-	void insert(int reg);
+	void insert(int key);
 
 	bool remove(int key);
 

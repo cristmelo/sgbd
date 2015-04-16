@@ -8,8 +8,24 @@ int Database::search(int key){
 
 }
 
-void Database::insert(int reg){
-
+void Database::insert(int key){
+	Directory *dic = Directory::readDirectory(0, dicName);
+	int *result = dic->findBucket(key); //result[0] = positionBucket[bucket];result[1] = localDepthBucket[bucket];result[3] = bucket;
+	Bucket *buc = new Bucket(dbName, result[0], result[1]);
+	if(!buc->isFull()){
+		buc->insertDataEntry(key,generatedRids);
+	}else{
+		Bucket *newBucket = new Bucket(dbName,buc->getLocalDepth());
+		if(dic->getGlobalDepth() > buc->getLocalDepth()){
+			
+		}else if(dic->getGlobalDepth() == buc->getLocalDepth()){
+			
+		}
+		buc->incrementLocalDepth();
+		newBucket->incrementLocalDepth();
+		newBucket->write();
+	}
+	buc->write();
 }
 
 bool Database::remove(int key){

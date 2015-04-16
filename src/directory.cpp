@@ -58,11 +58,17 @@ Directory::Directory( int globalDepth,string path ){
   	}
 }
 
-int* Directory::findBucket( int key ){
+int* Directory::findBucket( int key  ){
+	return findBucket(key,globalDepth);
+}
+
+int* Directory::findBucket( int key , int level ){
 	string binary = bitset<32>(key).to_string();
-	string binaryG = binary.substr(32 - globalDepth,32);
+	string binaryG = binary.substr(32 - level,32);
 	int bucket = bitset<32>(binaryG).to_ulong();
 	// cout << positionBucket[bucket] <<endl;
+	if(localDepthBucket[bucket] != level)
+		return findBucket(key,localDepthBucket[bucket]);
 	int *result = new int[3];
 	result[0] = positionBucket[bucket];
 	result[1] = localDepthBucket[bucket];
@@ -115,4 +121,15 @@ void Directory::write(){
 }
 int Directory::getLocalDepthBucket(int id){
 	return localDepthBucket[id];
+}
+int Directory::getGlobalDepth(){
+	return globalDepth;
+}
+bool Directory::updateReference(int index, int position, int localDepth){
+	if(index < numberOfBuckets){
+		positionBucket[index] = position;
+		localDepthBucket[index] = localDepth;
+		return true;
+	}
+	return false;
 }

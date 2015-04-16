@@ -24,11 +24,18 @@ public:
 
 	int* findBucket( int key );//result[0] = positionBucket[bucket];result[1] = localDepthBucket[bucket];result[3] = bucket;
 
+	int* findBucket( int key , int level);//result[0] = positionBucket[bucket];result[1] = localDepthBucket[bucket];result[3] = bucket;
+
 	int getLocalDepthBucket(int id);
+
+	int getGlobalDepth();
 
 	void duplicate(int positionBucketCurrent, int indexBucketCurrent );
 
+	bool updateReference(int index, int position, int localDepth);
+
 	void write();
+
 	static Directory* readDirectory(int position, string path);
 
 };
