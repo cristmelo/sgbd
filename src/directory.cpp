@@ -71,8 +71,30 @@ int* Directory::findBucket( int key ){
 }
 
 
-void Directory::duplicate(){
-	//TODO
+void Directory::duplicate(int positionBucketCurrent, int indexBucketCurrent){
+	int maxBuckets = numberOfBuckets;
+	numberOfBuckets *= 2;
+	globalDepth++;
+	bytes = ( LENGTH_DEPTH + (numberOfBuckets * (LENGTH_DEPTH + LENGTH_ID_BUCKET)) );
+	int *newpositionBucket = new int[numberOfBuckets];
+	int *newlocalDepthBucket = new int[numberOfBuckets];
+	for(int i = 0; i < maxBuckets ; i++){
+		if(i == indexBucketCurrent){
+			newpositionBucket[i] = positionBucket[i];
+			newlocalDepthBucket[i] = globalDepth;
+			newpositionBucket[i + maxBuckets] = positionBucketCurrent;
+			newlocalDepthBucket[i + maxBuckets] = globalDepth;
+		}else{
+			newpositionBucket[i] = positionBucket[i];
+			newlocalDepthBucket[i] = localDepthBucket[i];
+			newpositionBucket[i + maxBuckets] = positionBucket[i];
+			newlocalDepthBucket[i + maxBuckets] = localDepthBucket[i];
+		}
+	}
+	delete positionBucket;
+	delete localDepthBucket;
+	positionBucket = newpositionBucket;
+	localDepthBucket = newlocalDepthBucket;
 }
 
 

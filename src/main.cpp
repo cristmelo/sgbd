@@ -44,18 +44,27 @@ int main(){
 		// for(int i = 0 ; i < bucket2->numberOfTheDataEntry ; i++)
 		// 	cout << "entrada: " << i << " Valor:" << bucket2->teste[i] << endl;
 
-		// Directory *dic = Directory::readDirectory(0,"db.dic"); // ler
-		// // Directory *dic = new Directory(2,"db.dic"); // cria
+		Directory *dic = Directory::readDirectory(0,"db.dic"); // ler
+		// Directory *dic = new Directory(2,"db.dic"); // cria
 		// dic->findBucket(0);
 		// dic->findBucket(1);
 		// dic->findBucket(2);
 		// dic->findBucket(3);
 		// dic->findBucket(4);
+
 		// cout << "Diretório " << dic->position << "\nProfundidade: " << dic->globalDepth << "\nNúmero de buckets: " << dic->numberOfBuckets << "\nNúmero de Bytes: " << dic->bytes << endl;
 		// for(int i = 0; i < dic->numberOfBuckets; i++ )
 		// 	cout << "Bucket :" << dic->positionBucket[i] << "\tProfundidade: " << dic->localDepthBucket[i] << endl;
+		// dic->duplicate(1024,0);
+		// cout << "Diretório duplicado " << dic->position << "\nProfundidade: " << dic->globalDepth << "\nNúmero de buckets: " << dic->numberOfBuckets << "\nNúmero de Bytes: " << dic->bytes << endl;
+		// for(int i = 0; i < dic->numberOfBuckets; i++ )
+		// 	cout << "Bucket :" << dic->positionBucket[i] << "\tProfundidade: " << dic->localDepthBucket[i] << endl;
+		// dic->duplicate(1280,1);
+		// cout << "Diretório duplicado 2 " << dic->position << "\nProfundidade: " << dic->globalDepth << "\nNúmero de buckets: " << dic->numberOfBuckets << "\nNúmero de Bytes: " << dic->bytes << endl;
+		// for(int i = 0; i < dic->numberOfBuckets; i++ )
+		// 	cout << "Bucket :" << dic->positionBucket[i] << "\tProfundidade: " << dic->localDepthBucket[i] << endl;
 		// dic->write();
-		// file->close();
+		file->close();
 	}else{
 		cout << "Erro Banco de dados não encontrado" << endl;
 	}

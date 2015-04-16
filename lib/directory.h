@@ -26,7 +26,7 @@ public:
 
 	int getLocalDepthBucket(int id);
 
-	void duplicate();
+	void duplicate(int positionBucketCurrent, int indexBucketCurrent );
 
 	void write();
 	static Directory* readDirectory(int position, string path);
