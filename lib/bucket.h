@@ -21,7 +21,7 @@ public:
 
 // public:
 	Bucket(string path,int localDepth);
-	Bucket(string path, int position, int localDepth);
+	Bucket(string path, int position, int localDepth); // Na realidade esse construtor ler um buncket do disco
 
 	DataEntry* findDataEntry( int key );
 

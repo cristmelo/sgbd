@@ -44,7 +44,7 @@ int main(){
 		// for(int i = 0 ; i < bucket2->numberOfTheDataEntry ; i++)
 		// 	cout << "entrada: " << i << " Valor:" << bucket2->teste[i] << endl;
 
-		Directory *dic = Directory::readDirectory(0,"db.dic"); // ler
+		// Directory *dic = Directory::readDirectory(0,"db.dic"); // ler
 		// Directory *dic = new Directory(2,"db.dic"); // cria
 		// dic->findBucket(0);
 		// dic->findBucket(1);
