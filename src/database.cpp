@@ -1,6 +1,20 @@
 #include "../lib/main.h"
 Database::Database(string path){
-	openDB(path);
+	generatedRids = new set<int> ();
+	dbName = path + ".db";
+	dicName = path + ".dic";
+	fstream *file = new fstream(dbName.c_str(), ios::in | ios::out );
+	fstream *dic = new fstream(dicName.c_str(),ios::in | ios::out);
+	if(*file && *dic){
+		file->seekg (0, file->beg);
+		this->DB = file;
+		dic->seekg(0,file->beg);
+		this->Dic = dic;
+
+		cout << "Banco de dados aberto com sucesso\n";
+	}else{
+		cout << "Erro Banco de dados não encontrado" << endl;
+	}
 
 }
 
@@ -37,7 +51,8 @@ void Database::insert(int key){
 		newBucket->write();
 	}
 	buc->write();
-
+	dic->write();
+	cout << "Inserção com sucesso!\n";
 }
 
 bool Database::remove(int key){
@@ -48,13 +63,11 @@ bool Database::remove(int key){
 	Bucket *buc = new Bucket( dbName, result[0], result[1] );
 
 	buc->removeDataEntry( key );	
+	buc->write();
+	dic->write();
+	cout << "Remoção com sucesso!\n";
 }
 
-bool Database::open(string path){
-	this->close();
-	openDB(path);
-
-}
 
 bool Database::close(){
 	if(*(this->DB)){
@@ -72,27 +85,9 @@ bool Database::close(){
 	else
 		cout << "Nenhum Banco de dados aberto\n";
 }
+void Database::create(){
+	Directory *dic = new Directory( 2, dicName );
+	
 
-void Database::openDB(string path){
-	generatedRids = new set<int> ();
-	string dbName,dicName;
-	dbName = path + ".db";
-	dicName = path + ".dic";
-	fstream *file = new fstream(dbName.c_str(), ios::in | ios::out );
-	fstream *dic = new fstream(dicName.c_str(),ios::in | ios::out);
-	if(*file && *dic){
-		file->seekg (0, file->beg);
-		this->DB = file;
-		dic->seekg(0,file->beg);
-		this->Dic = dic;
-		
 
-		// *DB << true;
-		// DB->seekp(1,DB->beg);
-		// *DB << 23;
-
-		cout << "Banco de dados aberto com sucesso\n";
-	}else{
-		cout << "Erro Banco de dados não encontrado" << endl;
-	}
 }

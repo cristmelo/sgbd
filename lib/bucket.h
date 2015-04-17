@@ -6,7 +6,7 @@ abstract:
 */
 
 class Bucket{
-public:
+// public:
 	int localDepth;
 	int position;
 
@@ -19,7 +19,7 @@ public:
 
 	string* teste;
 
-// public:
+public:
 	Bucket(string path,int localDepth);
 	Bucket(string path, int position, int localDepth); // Na realidade esse construtor ler um buncket do disco
 

@@ -6,7 +6,7 @@ abstract:
 */
 
 class Directory{
-public:
+// public:
 	int position;
 	int globalDepth;
 
@@ -17,7 +17,7 @@ public:
 	int bytes;
 	string path;
 
-// public:
+public:
 
 	Directory(int globalDepth,int position,string path );
 	Directory( int globalDepth, string path );

@@ -4,14 +4,18 @@
 
 int main(){
 
-	set<int> *generatedRids = new set<int> ();
+	// set<int> *generatedRids = new set<int> ();
 
-	// Database db("db");
+	Database *db = new Database("db");
+	db->insert(1);
+	cout << db->search(1) << endl;
+	db->remove(1);
+	cout << db->search(1) << endl;
 
-	// db.close();
+	db->close();
 	
-	fstream *file = new fstream("db2.db", ios::in | ios::out );
-	if(*file){
+	// fstream *file = new fstream("db2.db", ios::in | ios::out );
+	// if(*file){
 		// file->seekg (0, file->beg);
 		// cout << "Banco de dados aberto com sucesso\n";
 		// Bucket *bucket = new Bucket("db2.db",0,2);
@@ -69,10 +73,10 @@ int main(){
 		// cout << dic->findBucket(7)[0] << "     " << dic->findBucket(7)[1]<< "     " << dic->findBucket(7)[2] << endl;
 		// cout << dic->findBucket(8)[0] << "     " << dic->findBucket(8)[1]<< "     " << dic->findBucket(8)[2] << endl;
 		// cout << dic->findBucket(9)[0] << "     " << dic->findBucket(9)[1]<< "     " << dic->findBucket(9)[2] << endl;
-		file->close();
-	}else{
-		cout << "Erro Banco de dados não encontrado" << endl;
-	}
+	// 	file->close();
+	// }else{
+	// 	cout << "Erro Banco de dados não encontrado" << endl;
+	// }
 
 	//DataEntry *data = new DataEntry(23);
 	// DataEntry *data = new DataEntry(1, generatedRids);

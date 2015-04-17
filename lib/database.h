@@ -12,7 +12,6 @@ class Database{
 
 	set<int> *generatedRids;
 
-	void openDB(string path);
 public:
 	Database(string path);
 
@@ -22,7 +21,7 @@ public:
 
 	bool remove(int key);
 
-	bool open(string path);
+	void create();
 
 	bool close();
 
