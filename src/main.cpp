@@ -46,11 +46,6 @@ int main(){
 
 		// Directory *dic = Directory::readDirectory(0,"db.dic"); // ler
 		// Directory *dic = new Directory(2,"db.dic"); // cria
-		// dic->findBucket(0);
-		// dic->findBucket(1);
-		// dic->findBucket(2);
-		// dic->findBucket(3);
-		// dic->findBucket(4);
 
 		// cout << "Diretório " << dic->position << "\nProfundidade: " << dic->globalDepth << "\nNúmero de buckets: " << dic->numberOfBuckets << "\nNúmero de Bytes: " << dic->bytes << endl;
 		// for(int i = 0; i < dic->numberOfBuckets; i++ )
@@ -64,6 +59,16 @@ int main(){
 		// for(int i = 0; i < dic->numberOfBuckets; i++ )
 		// 	cout << "Bucket :" << dic->positionBucket[i] << "\tProfundidade: " << dic->localDepthBucket[i] << endl;
 		// dic->write();
+		// cout << dic->findBucket(0)[0] << "     " << dic->findBucket(0)[1]<< "     " << dic->findBucket(0)[2] << endl;
+		// cout << dic->findBucket(1)[0] << "     " << dic->findBucket(1)[1]<< "     " << dic->findBucket(1)[2] << endl;
+		// cout << dic->findBucket(2)[0] << "     " << dic->findBucket(2)[1]<< "     " << dic->findBucket(2)[2] << endl;
+		// cout << dic->findBucket(3)[0] << "     " << dic->findBucket(3)[1]<< "     " << dic->findBucket(3)[2] << endl;
+		// cout << dic->findBucket(4)[0] << "     " << dic->findBucket(4)[1]<< "     " << dic->findBucket(4)[2] << endl;
+		// cout << dic->findBucket(5)[0] << "     " << dic->findBucket(5)[1]<< "     " << dic->findBucket(5)[2] << endl;
+		// cout << dic->findBucket(6)[0] << "     " << dic->findBucket(6)[1]<< "     " << dic->findBucket(6)[2] << endl;
+		// cout << dic->findBucket(7)[0] << "     " << dic->findBucket(7)[1]<< "     " << dic->findBucket(7)[2] << endl;
+		// cout << dic->findBucket(8)[0] << "     " << dic->findBucket(8)[1]<< "     " << dic->findBucket(8)[2] << endl;
+		// cout << dic->findBucket(9)[0] << "     " << dic->findBucket(9)[1]<< "     " << dic->findBucket(9)[2] << endl;
 		file->close();
 	}else{
 		cout << "Erro Banco de dados não encontrado" << endl;

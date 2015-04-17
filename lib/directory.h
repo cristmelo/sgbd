@@ -22,15 +22,15 @@ public:
 	Directory(int globalDepth,int position,string path );
 	Directory( int globalDepth, string path );
 
-	int* findBucket( int key );//result[0] = positionBucket[bucket];result[1] = localDepthBucket[bucket];result[3] = bucket;
+	int* findBucket( int key );//result[0] = positionBucket[bucket];result[1] = localDepthBucket[bucket];result[2] = bucket;
 
-	int* findBucket( int key , int level);//result[0] = positionBucket[bucket];result[1] = localDepthBucket[bucket];result[3] = bucket;
+	int* findBucket( int key , int level);//result[0] = positionBucket[bucket];result[1] = localDepthBucket[bucket];result[2] = bucket;
 
 	int getLocalDepthBucket(int id);
 
 	int getGlobalDepth();
 
-	void duplicate(int positionBucketCurrent, int indexBucketCurrent );
+	void duplicate(int newBucket, int indexBucketCurrent );
 
 	bool updateReference(int index, int position, int localDepth);
 

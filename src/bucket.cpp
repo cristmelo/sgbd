@@ -133,3 +133,27 @@ int Bucket::getPosition(){
 int Bucket::getLocalDepth(){
 	return localDepth;
 }
+
+void Bucket::repartBucket(int indexBucket, Bucket* bucket){
+	for(int i = 0; i < numberOfTheDataEntry ; i++){
+		string binary = bitset<32>(dataEntry[i]->getKey()).to_string();
+		string binaryG = binary.substr(32 - localDepth,32);
+		int newIndexBucket = bitset<32>(binaryG).to_ulong();
+		if(indexBucket != newIndexBucket){
+			isUse[i] = false;
+			numberOfTheDataEntryEmpty++;
+			bucket->insertDataEntry(dataEntry[i]);
+		}
+	}
+}
+void Bucket::insertDataEntry(DataEntry *data){
+	if(isFull())
+		return ;
+	for(int i = 0 ; i < numberOfTheDataEntry; i++)
+		if(!isUse[i]){
+			dataEntry[i] = data;
+			isUse[i] = true;
+			numberOfTheDataEntryEmpty--;
+			return;
+		}
+}

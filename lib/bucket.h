@@ -26,6 +26,7 @@ public:
 	DataEntry* findDataEntry( int key );
 
 	void insertDataEntry(int key, set<int> *generatedRids);
+	void insertDataEntry(DataEntry *data);
 
 	void removeDataEntry(int key);
 
@@ -37,6 +38,8 @@ public:
 
 	int getPosition();
 	int getLocalDepth();
+
+	void repartBucket(int indexBucket,Bucket* bucket);
 
 
 };

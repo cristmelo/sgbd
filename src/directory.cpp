@@ -66,18 +66,19 @@ int* Directory::findBucket( int key , int level ){
 	string binary = bitset<32>(key).to_string();
 	string binaryG = binary.substr(32 - level,32);
 	int bucket = bitset<32>(binaryG).to_ulong();
-	// cout << positionBucket[bucket] <<endl;
+	// cout << positionBucket[bucket] << " | " << localDepthBucket[bucket] << endl;
+	// cout << "foi\n";
 	if(localDepthBucket[bucket] != level)
 		return findBucket(key,localDepthBucket[bucket]);
 	int *result = new int[3];
 	result[0] = positionBucket[bucket];
 	result[1] = localDepthBucket[bucket];
-	result[3] = bucket;
+	result[2] = bucket;
 	return result;
 }
 
 
-void Directory::duplicate(int positionBucketCurrent, int indexBucketCurrent){
+void Directory::duplicate(int newBucket, int indexBucketCurrent){
 	int maxBuckets = numberOfBuckets;
 	numberOfBuckets *= 2;
 	globalDepth++;
@@ -88,7 +89,7 @@ void Directory::duplicate(int positionBucketCurrent, int indexBucketCurrent){
 		if(i == indexBucketCurrent){
 			newpositionBucket[i] = positionBucket[i];
 			newlocalDepthBucket[i] = globalDepth;
-			newpositionBucket[i + maxBuckets] = positionBucketCurrent;
+			newpositionBucket[i + maxBuckets] = newBucket;
 			newlocalDepthBucket[i + maxBuckets] = globalDepth;
 		}else{
 			newpositionBucket[i] = positionBucket[i];

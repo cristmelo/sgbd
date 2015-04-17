@@ -10,22 +10,27 @@ int Database::search(int key){
 
 void Database::insert(int key){
 	Directory *dic = Directory::readDirectory(0, dicName);
-	int *result = dic->findBucket(key); //result[0] = positionBucket[bucket];result[1] = localDepthBucket[bucket];result[3] = bucket;
+	int *result = dic->findBucket(key); //result[0] = positionBucket[bucket];result[1] = localDepthBucket[bucket];result[2] = bucket;
 	Bucket *buc = new Bucket(dbName, result[0], result[1]);
 	if(!buc->isFull()){
 		buc->insertDataEntry(key,generatedRids);
 	}else{
 		Bucket *newBucket = new Bucket(dbName,buc->getLocalDepth());
-		if(dic->getGlobalDepth() > buc->getLocalDepth()){
-			
-		}else if(dic->getGlobalDepth() == buc->getLocalDepth()){
-			
-		}
+		newBucket->insertDataEntry(key,generatedRids);
 		buc->incrementLocalDepth();
 		newBucket->incrementLocalDepth();
+		if(dic->getGlobalDepth() == buc->getLocalDepth()){
+			dic->updateReference(result[2] , buc->getPosition(), buc->getLocalDepth());
+			dic->updateReference(result[2] + pow(2,result[1]) , newBucket->getPosition(), newBucket->getLocalDepth());
+
+		}else if(dic->getGlobalDepth() < buc->getLocalDepth()){
+			dic->duplicate(newBucket->getPosition(), result[2] );	
+		}
+		buc->repartBucket(result[2] ,newBucket);
 		newBucket->write();
 	}
 	buc->write();
+	
 }
 
 bool Database::remove(int key){
