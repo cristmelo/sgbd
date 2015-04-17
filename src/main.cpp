@@ -4,16 +4,67 @@
 
 int main(){
 
-	// set<int> *generatedRids = new set<int> ();
+	string path;
+	int op;
+	cout << "entre com o nome do banco:\n";
+	cin >> path;
 
-	Database *db = new Database("db");
-	db->insert(1);
-	cout << db->search(1) << endl;
-	db->remove(1);
-	cout << db->search(1) << endl;
+
+	Database *db = new Database(path);
+	cout << "Criar novo índice?\n0)Não\t1)Sim\n";
+	cin >> op;
+	if(op)
+		db->create();
+	op = 1;
+	int key;
+	while(op != 0){
+		cout << "----------------------------------------------------------------------------------------------\nestado:\n";
+		db->status();
+		cout << "Escolha a ação:\n0)Sair\n1)Inserir\n2)Busca\n3)Remover\n";
+		cin >> op;
+		switch(op){
+			case 1:
+				cout << "Entre com a chave que deseja inserir\n";
+				cin >> key;
+				db->insert(key);
+			break;
+			case 2:
+				cout << "Entre com a chave que deseja buscar\n";
+				cin >> key;
+				cout << db->search(key) << endl;
+			break;
+			case 3:
+				cout << "Entre com a chave que deseja remover\n";
+				cin >> key;
+				db->remove(key);
+			break;
+		}
+	}
 
 	db->close();
-	
+
+	return 0;
+
+}
+string stringNBytes(int num, int bytes){
+	string numS = to_string(num);
+	int addDigit = bytes - numS.length();
+	string r = "";
+	for(int i = 0 ; i < addDigit ; i++)
+		r+="0";
+	r+=numS;
+	return r;
+}
+
+
+
+void testes(){
+	// set<int> *generatedRids = new set<int> ();
+	// cout << "foi\n";
+	// db->insert(1);
+	// cout << db->search(1) << endl;
+	// db->remove(0);
+	// cout << db->search(0) << endl;
 	// fstream *file = new fstream("db2.db", ios::in | ios::out );
 	// if(*file){
 		// file->seekg (0, file->beg);
@@ -84,15 +135,4 @@ int main(){
 	// cout << generatedRids->count(1000) << endl;
 
 	//cout << data->getKey()<<endl<<data->getRid()<<endl<<data->getEntry() << endl;
-	return 0;
-
-}
-string stringNBytes(int num, int bytes){
-	string numS = to_string(num);
-	int addDigit = bytes - numS.length();
-	string r = "";
-	for(int i = 0 ; i < addDigit ; i++)
-		r+="0";
-	r+=numS;
-	return r;
 }

@@ -30,10 +30,10 @@ public:
 
 	int getGlobalDepth();
 
+	int getNumberBuckets();
 	void duplicate(int newBucket, int indexBucketCurrent );
 
 	bool updateReference(int index, int position, int localDepth);
-
 	void write();
 
 	static Directory* readDirectory(int position, string path);

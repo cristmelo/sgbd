@@ -30,14 +30,19 @@ int Database::search(int key){
 }
 
 void Database::insert(int key){
+	// cout << "1" << endl;
+	int numBucket;
 	Directory *dic = Directory::readDirectory(0, dicName);
+	// cout << "2" << endl;
 	int *result = dic->findBucket(key); //result[0] = positionBucket[bucket];result[1] = localDepthBucket[bucket];result[2] = bucket;
+	// cout << "3 " << dbName << endl;
 	Bucket *buc = new Bucket(dbName, result[0], result[1]);
+	numBucket = result[2];
+	// cout << "4" << endl;
 	if(!buc->isFull()){
 		buc->insertDataEntry(key,generatedRids);
 	}else{
 		Bucket *newBucket = new Bucket(dbName,buc->getLocalDepth());
-		newBucket->insertDataEntry(key,generatedRids);
 		buc->incrementLocalDepth();
 		newBucket->incrementLocalDepth();
 		if(dic->getGlobalDepth() == buc->getLocalDepth()){
@@ -48,11 +53,20 @@ void Database::insert(int key){
 			dic->duplicate(newBucket->getPosition(), result[2] );	
 		}
 		buc->repartBucket(result[2] ,newBucket);
+		delete result;
+		result = dic->findBucket(key);
+		if(buc->getPosition() == result[0])
+			buc->insertDataEntry(key,generatedRids);
+		else
+			newBucket->insertDataEntry(key,generatedRids);
+		numBucket = result[2];
 		newBucket->write();
 	}
+	// cout << "5" << endl;
 	buc->write();
+	// cout << "6" << endl;
 	dic->write();
-	cout << "Inserção com sucesso!\n";
+	cout << "Inserção com sucesso no Bucket "<< numBucket <<"!\n";
 }
 
 bool Database::remove(int key){
@@ -87,7 +101,19 @@ bool Database::close(){
 }
 void Database::create(){
 	Directory *dic = new Directory( 2, dicName );
-	
+	dic->write();
+	Bucket *buc0 = new Bucket(dbName,2);
+	buc0->write();
+	Bucket *buc1 = new Bucket(dbName,2);
+	buc1->write();
+	Bucket *buc2 = new Bucket(dbName,2);
+	buc2->write();
+	Bucket *buc3 = new Bucket(dbName,2);
+	buc3->write();
 
 
+}
+void Database::status(){
+	Directory *dic = Directory::readDirectory(0, dicName);
+	cout << "Nome do banco: " << dbName << "\tNome Diretório: " << dicName <<"\t Profundidade Global: " << dic->getGlobalDepth() << "\nNúmero de Buckets: " << dic->getNumberBuckets()<<endl;
 }

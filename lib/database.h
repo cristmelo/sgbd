@@ -25,5 +25,5 @@ public:
 
 	bool close();
 
-
+	void status();
 };

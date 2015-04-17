@@ -37,7 +37,7 @@ Bucket::Bucket(string path, int position, int localDepth){
 	char *buffer = new char[bytesForBucket];
 	db->seekg(this->position,db->beg);
 	db->read(buffer,bytesForBucket);
-
+	// cout << bytesForBucket << " buffer "<< buffer<<endl;
 	for(int i = 0; i < this->numberOfTheDataEntry ;i++){
 		string current;
 		current = buffer[i];
@@ -54,7 +54,9 @@ Bucket::Bucket(string path, int position, int localDepth){
 		for(int j = 0; j < LENGTH_DATA_ENTRY; j++){
 			data += buffer[indexCurrent+j];
 		}
+		// cout << data << endl;
 		this->dataEntry[i] = new DataEntry(data);
+		// cout << "foi\n";
 		// this->teste[i] = data;
 	}
 	delete buffer;

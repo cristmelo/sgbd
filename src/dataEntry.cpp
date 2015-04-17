@@ -23,7 +23,7 @@ DataEntry::DataEntry( string data ){
 
 DataEntry::DataEntry( int key, set<int> *generatedRids ){
     
-            if( key > 0 && key < 9999 ){
+            if( key >= 0 && key < 9999 ){
                     
                     this->key = key;
 

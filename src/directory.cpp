@@ -44,7 +44,8 @@ Directory::Directory( int globalDepth,string path ){
   	int position = dic->tellg();
   	dic->close();
 
-  	this->position = position;
+  	// this->position = position;
+  	this->position = 0;
 	this->globalDepth = globalDepth;
 	this->path = path;
 	numberOfBuckets = pow(2,globalDepth);
@@ -102,6 +103,7 @@ void Directory::duplicate(int newBucket, int indexBucketCurrent){
 	delete localDepthBucket;
 	positionBucket = newpositionBucket;
 	localDepthBucket = newlocalDepthBucket;
+	cout << "Duplicou diretório!!!\n";
 }
 
 
@@ -133,4 +135,7 @@ bool Directory::updateReference(int index, int position, int localDepth){
 		return true;
 	}
 	return false;
+}
+int Directory::getNumberBuckets(){
+	return numberOfBuckets;
 }
