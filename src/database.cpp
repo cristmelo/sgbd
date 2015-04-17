@@ -4,8 +4,15 @@ Database::Database(string path){
 
 }
 
-int Database::search(int key){
+int Database::search(int key){	
 
+	Directory *dic = Directory::readDirectory(0, dicName);
+
+	int *result = dic->findBucket( key );
+
+	Bucket *buc = new Bucket( dbName, result[0], result[1] );
+
+	return	buc->findDataEntry( key )->getRid();
 }
 
 void Database::insert(int key){
@@ -30,11 +37,17 @@ void Database::insert(int key){
 		newBucket->write();
 	}
 	buc->write();
-	
+
 }
 
 bool Database::remove(int key){
+	Directory *dic = Directory::readDirectory(0, dicName);
 
+	int *result = dic->findBucket( key );
+
+	Bucket *buc = new Bucket( dbName, result[0], result[1] );
+
+	buc->removeDataEntry( key );	
 }
 
 bool Database::open(string path){
