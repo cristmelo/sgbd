@@ -53,14 +53,19 @@ void Database::insert(int key){
 			dic->duplicate(newBucket->getPosition(), result[2] );	
 		}
 		buc->repartBucket(result[2] ,newBucket);
-		delete result;
-		result = dic->findBucket(key);
-		if(buc->getPosition() == result[0])
-			buc->insertDataEntry(key,generatedRids);
-		else
-			newBucket->insertDataEntry(key,generatedRids);
-		numBucket = result[2];
+		buc->write();
 		newBucket->write();
+		dic->write();
+		delete result;
+		insert(key);
+		// result = dic->findBucket(key);
+		// // cout << "6" << endl;
+		// dic->write();
+		// if(buc->getPosition() == result[0])
+		// 	buc->insertDataEntry(key,generatedRids);
+		// else
+		// 	newBucket->insertDataEntry(key,generatedRids);
+		// numBucket = result[2];
 	}
 	// cout << "5" << endl;
 	buc->write();
